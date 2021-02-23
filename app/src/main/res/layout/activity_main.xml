@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009688"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/selectTest"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="341dp"
+        android:layout_marginBottom="342dp"
+        android:backgroundTint="#673AB7"
+        android:onClick="selTests"
+        android:text="Run Selected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/allTests"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="341dp"
+        android:layout_marginBottom="342dp"
+        android:backgroundTint="#673AB7"
+        android:onClick="cameraTest"
+        android:text="Run Camera Test"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/showInfo"
+        android:layout_width="361dp"
+        android:layout_height="253dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Kotlin Benchmarks"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toTopOf="@+id/showInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041" />
+
+    <Switch
+        android:id="@+id/base64Switch"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="241dp"
+        android:text="Base64"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/brainSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Switch
+        android:id="@+id/brainSwitch"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="240dp"
+        android:text="BrainFTest"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/matmulSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/base64Switch"
+        app:layout_constraintTop_toBottomOf="@+id/base64Switch" />
+
+    <Switch
+        android:id="@+id/matmulSwitch"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="241dp"
+        android:text="MatMul"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/allTests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brainSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/brainSwitch" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="matmulSwitch,brainSwitch,base64Switch" />
+
+    <Switch
+        android:id="@+id/fastaSwitch"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="72dp"
+        android:text="Fasta"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/fannSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/base64Switch"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Switch
+        android:id="@+id/fannSwitch"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:text="Fannkuch"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/nbodySwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toEndOf="@+id/brainSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/fastaSwitch" />
+
+    <Switch
+        android:id="@+id/nbodySwitch"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:text="NBody"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/allTests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toEndOf="@+id/matmulSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/fannSwitch"
+        app:layout_constraintVertical_bias="0.505" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
