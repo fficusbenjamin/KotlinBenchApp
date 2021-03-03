@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+
 }
 
 android {
@@ -24,16 +26,28 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility kotlin_version
-        targetCompatibility kotlin_version
+        /*sourceCompatibility kotlin_version
+        targetCompatibility kotlin_version*/
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+
     }
     kotlinOptions {
-        //jvmTarget = '1.8'
-        kotlinOptions.useIR = true
+        jvmTarget = '1.8'
+        //kotlinOptions.useIR = true
     }
 }
 
 dependencies {
+
+    def camerax_version = "1.0.0-beta07"
+// CameraX core library using camera2 implementation
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+// CameraX Lifecycle Library
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+// CameraX View class
+    implementation "androidx.camera:camera-view:1.0.0-alpha14"
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'

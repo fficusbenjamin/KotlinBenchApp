@@ -1,5 +1,6 @@
 package com.example.kotlinpj
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Switch
@@ -19,14 +20,16 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun cameraTest(view: View?) {
+    fun cameraTest(view: View) {
+        val intent = Intent(this, CameraX::class.java)
+        startActivity(intent)
         /*val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5)
         startActivityForResult(intent, 1)*/
     }
 
     @Throws(Exception::class)
-    fun selTests(view: View?) {
+    fun selTests(view: View) {
         val base64Sw = findViewById<Switch>(R.id.base64Switch)
         val brainfSw = findViewById<Switch>(R.id.brainSwitch)
         val matSw = findViewById<Switch>(R.id.matmulSwitch)
@@ -95,22 +98,4 @@ class MainActivity : AppCompatActivity() {
             info.text = result
         }
     }
-
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK && requestCode == 1) {
-            val builder = AlertDialog.Builder(this)
-            val videoView = VideoView(this)
-            videoView.setVideoURI(data!!.data)
-            videoView.start()
-            builder.setView(videoView).show()
-            val info = findViewById<TextView>(R.id.showInfo)
-            time_diff = System.currentTimeMillis() - camera_time
-            info.text = String.format("Time for the Camera test: %f s\n", time_diff / 1e3)
-        }
-    }*/
-
-    /*companion object {
-        var time_diff: Long = 0
-    }*/
 }
