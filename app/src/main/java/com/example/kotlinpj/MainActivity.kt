@@ -1,19 +1,16 @@
 package com.example.kotlinpj
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.Switch
 import android.widget.TextView
-import android.widget.VideoView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinpj.Benchmarks.*
-import java.io.IOException
+
+
 
 class MainActivity : AppCompatActivity() {
-    val camera_time = System.currentTimeMillis()
+    //val camera_time = System.currentTimeMillis()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,11 +18,11 @@ class MainActivity : AppCompatActivity() {
         info.text = DeviceInfo.fullDeviceName
     }
 
-    @Throws(IOException::class)
+
     fun cameraTest(view: View?) {
-        val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
+        /*val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5)
-        startActivityForResult(intent, 1)
+        startActivityForResult(intent, 1)*/
     }
 
     @Throws(Exception::class)
@@ -37,10 +34,11 @@ class MainActivity : AppCompatActivity() {
         val fannSwitch = findViewById<Switch>(R.id.fannSwitch)
         val nbodySwitch = findViewById<Switch>(R.id.nbodySwitch)
         val info = findViewById<TextView>(R.id.showInfo)
+
+
         if (base64Sw.isChecked) {
             println("BASE64")
             val base64 = Base64Test
-            //Base64Test.main()
             base64.main()
             info.text = Base64Test.results()
         }
@@ -51,30 +49,54 @@ class MainActivity : AppCompatActivity() {
         }
         if (matSw.isChecked) {
             println("MATMUL")
-            MatMulTest.main()
-            info.text = MatMulTest.results()
+            val start_time = System.currentTimeMillis()
+            for(i in 1..100) {
+                MatMulTest.main()
+                println(MatMulTest.results())
+            }
+            val time_diff = System.currentTimeMillis() - start_time;
+            val result = String.format("Time for the MatMul test: %f s\n", time_diff / 1e3)
+            info.text = result
         }
         if (faSwitch.isChecked) {
             println("FASTA")
             val fastaTest = FastaTest()
-            fastaTest.runBenchmark()
-            info.text = fastaTest.results()
+            val start_time = System.currentTimeMillis()
+            for(i in 1..100) {
+                fastaTest.runBenchmark()
+                println(fastaTest.results())
+            }
+            val time_diff = System.currentTimeMillis() - start_time;
+            val result = String.format("Time for the Fasta test: %f s\n", time_diff / 1e3)
+            info.text = result
         }
         if (fannSwitch.isChecked) {
             println("FANNKUCK")
             val fannkuchTest = FannkuchTest()
-            fannkuchTest.runBenchmark()
-            info.text = FannkuchTest.results()
+            val start_time = System.currentTimeMillis()
+            for (i in 1..100) {
+                fannkuchTest.runBenchmark()
+                println(FannkuchTest.results())
+            }
+            val time_diff = System.currentTimeMillis() - start_time;
+            val result = String.format("Time for the Fannkuch test: %f s\n", time_diff / 1e3)
+            info.text = result
         }
         if (nbodySwitch.isChecked) {
             println("NBODY")
             val nbody = NBodyTest()
-            nbody.runBenchmark()
-            info.text = NBodyTest.results()
+            val start_time = System.currentTimeMillis()
+            for(i in 1..100) {
+                nbody.runBenchmark()
+                println(NBodyTest.results())
+            }
+            val time_diff = System.currentTimeMillis() - start_time;
+            val result = String.format("Time for the NBody test: %f s\n", time_diff / 1e3)
+            info.text = result
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && requestCode == 1) {
             val builder = AlertDialog.Builder(this)
@@ -86,9 +108,9 @@ class MainActivity : AppCompatActivity() {
             time_diff = System.currentTimeMillis() - camera_time
             info.text = String.format("Time for the Camera test: %f s\n", time_diff / 1e3)
         }
-    }
+    }*/
 
-    companion object {
+    /*companion object {
         var time_diff: Long = 0
-    }
+    }*/
 }
